@@ -1,0 +1,29 @@
+type Book {
+  # Example field (placeholder)
+  id: String!
+  title: String!
+  author: String!
+  publishedDate: Boolean!
+}
+
+input CreateBookInput {
+  # Example field (placeholder)
+  title: String!
+  author: String!
+  publishedDate: Boolean!
+}
+
+input UpdateBookInput {
+  id: String!
+}
+
+type Query {
+  book: [Book]!
+  book(id: String!): Book
+}
+
+type Mutation {
+  createBook(createBookInput: CreateBookInput!): Book!
+  updateBook(updateBookInput: UpdateBookInput!): Book!
+  removeBook(id: String!): Book
+}

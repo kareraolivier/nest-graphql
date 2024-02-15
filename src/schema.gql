@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Book {
+  author: String!
+  publishedDate: Boolean!
+  title: String!
+}
+
+input CreateBookInput {
+  author: String!
+  publishedDate: Boolean!
+  title: String!
+}
+
+type Mutation {
+  createBook(input: CreateBookInput!): Book!
+  deleteBook(id: ID!): Book!
+  updateBook(id: ID!, input: UpdateBookInput!): Book!
+}
+
+type Query {
+  findAll: Book!
+  findOne(id: String!): Book!
+}
+
+input UpdateBookInput {
+  author: String!
+  publishedDate: Boolean!
+  title: String!
+}
