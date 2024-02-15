@@ -3,30 +3,31 @@
 # ------------------------------------------------------
 
 type Book {
-  author: String
-  publishedDate: Boolean
-  title: String
-}
-
-input CreateBookInput {
-  author: String
-  publishedDate: Boolean
-  title: String
-}
-
-type Mutation {
-  createBook(input: CreateBookInput!): Book!
-  deleteBook(id: ID!): Book!
-  updateBook(id: ID!, input: UpdateBookInput!): Book!
+  title: String!
+  author: String!
+  publishedDate: Boolean!
 }
 
 type Query {
+  getHello: String!
   findAll: [Book!]!
   findOne(id: String!): Book!
 }
 
+type Mutation {
+  createBook(input: CreateBookInput!): Book!
+  updateBook(id: ID!, input: UpdateBookInput!): Book!
+  deleteBook(id: ID!): Book!
+}
+
+input CreateBookInput {
+  title: String!
+  author: String!
+  publishedDate: Boolean!
+}
+
 input UpdateBookInput {
-  author: String
-  publishedDate: Boolean
-  title: String
+  title: String!
+  author: String!
+  publishedDate: Boolean!
 }

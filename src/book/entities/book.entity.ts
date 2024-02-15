@@ -1,20 +1,26 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
-
-export type BookDocument = Book & Document;
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+// import { Document, Schema as MongooSchema } from 'mongoose';
 
 @ObjectType()
 @Schema()
 export class Book {
-  @Field({ nullable: true })
+  // @Field(() => String)
+  // @Prop()
+  // _id?: MongooSchema.Types.ObjectId;
+
+  @Field(() => String)
+  @Prop()
   title: string;
 
-  @Field({ nullable: true })
+  @Field(() => String)
+  @Prop()
   author: string;
 
-  @Field({ nullable: true })
+  @Field()
+  @Prop()
   publishedDate: boolean;
 }
 
+export type BookDocument = Book & Document;
 export const BookSchema = SchemaFactory.createForClass(Book);

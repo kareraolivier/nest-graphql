@@ -20,16 +20,13 @@ export class BookResolver {
 
   @Mutation(() => Book)
   async createBook(@Args('input') input: CreateBookInput): Promise<Book> {
-    if (!input.title) {
-      throw new Error('Title is required');
-    }
     return this.bookService.create(input);
   }
 
   @Mutation(() => Book)
   async updateBook(
     @Args('id', { type: () => ID }) id: string,
-    @Args('input') input: UpdateBookInput,
+    @Args('input') input?: UpdateBookInput,
   ): Promise<Book> {
     return this.bookService.update(id, input);
   }
