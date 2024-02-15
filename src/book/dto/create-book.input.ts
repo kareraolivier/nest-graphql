@@ -1,12 +1,12 @@
 import { InputType, Field } from '@nestjs/graphql';
 @InputType()
 export class CreateBookInput {
-  @Field()
+  @Field({ nullable: true })
   title: string;
 
-  @Field()
+  @Field({ nullable: true })
   author: string;
 
-  @Field()
+  @Field({ nullable: true })
   publishedDate: boolean;
 }

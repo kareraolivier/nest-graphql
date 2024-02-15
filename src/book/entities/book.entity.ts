@@ -7,13 +7,13 @@ export type BookDocument = Book & Document;
 @ObjectType()
 @Schema()
 export class Book {
-  @Field()
+  @Field({ nullable: true })
   title: string;
 
-  @Field()
+  @Field({ nullable: true })
   author: string;
 
-  @Field()
+  @Field({ nullable: true })
   publishedDate: boolean;
 }
 

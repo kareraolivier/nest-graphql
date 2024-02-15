@@ -5,27 +5,28 @@ import { Book, BookDocument } from './entities/book.entity';
 @Injectable()
 export class BookService {
   constructor(@InjectModel(Book.name) private bookModel: Model<BookDocument>) {}
-
-  async create(book: Book): Promise<Book> {
-    const newBook = await this.bookModel.create(book);
+  public async create(book: Book): Promise<Book> {
+    const newBook = new this.bookModel(book);
+    console.log(Book.name);
+    console.log(newBook);
     return newBook.save();
   }
 
-  async findAll(): Promise<Book[]> {
+  public async findAll(): Promise<Book[]> {
     return await this.bookModel.find().exec();
   }
 
-  async findOne(id: string): Promise<Book> {
+  public async findOne(id: string): Promise<Book> {
     return await this.bookModel.findById(id).exec();
   }
 
-  async update(id: string, book: Book): Promise<Book> {
+  public async update(id: string, book: Book): Promise<Book> {
     return await this.bookModel
       .findByIdAndUpdate(id, book, { new: true })
       .exec();
   }
 
-  async delete(id: string): Promise<Book> {
+  public async delete(id: string): Promise<Book> {
     return await this.bookModel.findByIdAndDelete(id).exec();
   }
 }

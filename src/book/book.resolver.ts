@@ -3,24 +3,26 @@ import { BookService } from './book.service';
 import { CreateBookInput } from './dto/create-book.input';
 import { UpdateBookInput } from './dto/update-book.input';
 import { Book } from './entities/book.entity';
-// import { IBook } from './interface/book.interface';
 
-@Resolver('Book')
+@Resolver(() => Book)
 export class BookResolver {
   constructor(private readonly bookService: BookService) {}
 
-  @Query(() => Book)
-  findAll() {
+  @Query(() => [Book])
+  findAll(): Promise<Book[]> {
     return this.bookService.findAll();
   }
 
   @Query(() => Book)
-  findOne(@Args('id') id: string) {
+  findOne(@Args('id') id: string): Promise<Book> {
     return this.bookService.findOne(id);
   }
 
   @Mutation(() => Book)
   async createBook(@Args('input') input: CreateBookInput): Promise<Book> {
+    if (!input.title) {
+      throw new Error('Title is required');
+    }
     return this.bookService.create(input);
   }
 

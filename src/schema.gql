@@ -3,15 +3,15 @@
 # ------------------------------------------------------
 
 type Book {
-  author: String!
-  publishedDate: Boolean!
-  title: String!
+  author: String
+  publishedDate: Boolean
+  title: String
 }
 
 input CreateBookInput {
-  author: String!
-  publishedDate: Boolean!
-  title: String!
+  author: String
+  publishedDate: Boolean
+  title: String
 }
 
 type Mutation {
@@ -21,12 +21,12 @@ type Mutation {
 }
 
 type Query {
-  findAll: Book!
+  findAll: [Book!]!
   findOne(id: String!): Book!
 }
 
 input UpdateBookInput {
-  author: String!
-  publishedDate: Boolean!
-  title: String!
+  author: String
+  publishedDate: Boolean
+  title: String
 }
